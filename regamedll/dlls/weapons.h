@@ -308,6 +308,7 @@ public:
 public:
 #ifdef REGAMEDLL_API
 	CCSPlayerItem *CSPlayerItem() const;
+	virtual void OnDestroy();
 #endif
 
 	const char *pszAmmo1() const;

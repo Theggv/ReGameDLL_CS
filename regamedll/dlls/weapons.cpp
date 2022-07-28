@@ -2603,3 +2603,15 @@ int CBasePlayerItem::iFlags() const
 {
 	return m_ItemInfoEx.iFlags;
 }
+
+#ifdef REGAMEDLL_API
+void CBasePlayerItem::OnDestroy()
+{
+	if (!m_pPlayer) return;
+
+	if (this->iItemSlot() == GRENADE_SLOT)
+		m_pPlayer->CSPlayer()->RemovePlayerItemEx(STRING(this->pev->classname), true);
+	else
+		m_pPlayer->CSPlayer()->RemovePlayerItem(STRING(this->pev->classname));
+}
+#endif
