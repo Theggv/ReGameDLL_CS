@@ -2608,6 +2608,7 @@ int CBasePlayerItem::iFlags() const
 void CBasePlayerItem::OnDestroy()
 {
 	if (!m_pPlayer) return;
+	if (m_pPlayer->has_disconnected) return;
 
 	if (this->iItemSlot() == GRENADE_SLOT)
 		m_pPlayer->CSPlayer()->RemovePlayerItemEx(STRING(this->pev->classname), true);
